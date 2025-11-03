@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Cycle - Suivi Menstruel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'primary-light': '#FBE9F0', // Light Pink
+              'secondary-light': '#E5E7EB', // Pastel Gray
+              'accent-light': '#F871B0', // Stronger Pink
+              'fertile-light': '#FBD3E0', // Light Rose for fertile days
+              'safe-light': '#D1FAE5', // Light Green for safe days
+              'primary-dark': '#1F2937', // Dark Gray/Black
+              'secondary-dark': '#374151', // Lighter Dark Gray
+              'accent-dark': '#E53E8A', // Dark Pink
+              'fertile-dark': '#7C2D49', // Dark Rose for fertile days
+              'safe-dark': '#064E3B', // Dark Green for safe days
+            },
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.5",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "date-fns/": "https://aistudiocdn.com/date-fns@^4.1.0/",
+    "date-fns": "https://aistudiocdn.com/date-fns@^4.1.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-white dark:bg-primary-dark">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
