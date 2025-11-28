@@ -1,27 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mon Cycle - Suivi Menstruel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
             colors: {
-              'primary-light': '#FBE9F0', // Light Pink
-              'secondary-light': '#E5E7EB', // Pastel Gray
-              'accent-light': '#F871B0', // Stronger Pink
-              'fertile-light': '#FBD3E0', // Light Rose for fertile days
-              'safe-light': '#D1FAE5', // Light Green for safe days
-              'primary-dark': '#1F2937', // Dark Gray/Black
-              'secondary-dark': '#374151', // Lighter Dark Gray
-              'accent-dark': '#E53E8A', // Dark Pink
-              'fertile-dark': '#7C2D49', // Dark Rose for fertile days
-              'safe-dark': '#064E3B', // Dark Green for safe days
+              // Light Mode
+              'primary-bg-light': '#F8F7FF', // Softer Lilac BG
+              'card-bg-light': '#FFFFFF',
+              'accent-light': '#9370DB', // Medium Purple
+              'accent-hover-light': '#825fca',
+              'period-light': '#F472B6', // Pink
+              'ovulation-light': '#EF4444', // Red
+              'fertile-light': '#A78BFA', // Soft Purple
+              'text-heading-light': '#1F2937',
+              'text-body-light': '#4B5563',
+              'text-muted-light': '#9CA3AF',
+              
+              // Dark Mode
+              'primary-bg-dark': '#1A1A2E', // Deep Navy
+              'card-bg-dark': '#2C2C54', // Darker Card
+              'accent-dark': '#A78BFA', // Lighter purple for dark mode
+              'accent-hover-dark': '#9d7ffa',
+              'period-dark': '#F9A8D4', // Lighter pink for dark mode
+              'ovulation-dark': '#F87171', // Lighter Red
+              'fertile-dark': '#C4B5FD',
+              'text-heading-dark': '#E5E7EB',
+              'text-body-dark': '#D1D5DB',
+              'text-muted-dark': '#9CA3AF',
+            },
+            keyframes: {
+              'fade-in': {
+                '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+               'zoom-in': {
+                '0%': { opacity: '0', transform: 'scale(0.95)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              }
+            },
+            animation: {
+              'fade-in': 'fade-in 0.5s ease-out forwards',
+              'zoom-in': 'zoom-in 0.3s ease-out forwards',
             },
           },
         },
@@ -36,12 +68,14 @@
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "date-fns/": "https://aistudiocdn.com/date-fns@^4.1.0/",
     "date-fns": "https://aistudiocdn.com/date-fns@^4.1.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.3.0"
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.5.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0"
   }
 }
 </script>
 </head>
-  <body class="bg-white dark:bg-primary-dark">
+  <body class="bg-primary-bg-light dark:bg-primary-bg-dark font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
