@@ -6,9 +6,9 @@ import { useAppContext } from '../App';
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-// NOTE: This is a placeholder for the API key.
-// In a real application, this should be handled securely.
-const API_KEY = process.env.API_KEY;
+// Robust way to access API KEY in different environments (Vite, CRA, etc.)
+// @ts-ignore - import.meta meta-property is not allowed in this context (suppress TS warning for direct browser usage)
+const API_KEY = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_KEY) || (typeof process !== 'undefined' && process.env && process.env.API_KEY);
 
 interface Message {
     sender: 'user' | 'ai';
@@ -61,10 +61,10 @@ const AssistantScreen: React.FC = () => {
             if (!API_KEY) {
                 // Simulate API response for UI development without a key
                 setTimeout(() => {
-                    const demoResponse: Message = { sender: 'ai', text: "Ceci est une réponse de démonstration. Pour obtenir une vraie réponse de l'IA, veuillez configurer une clé API valide. N'oubliez pas de consulter un professionnel de santé pour tout avis médical." };
+                    const demoResponse: Message = { sender: 'ai', text: "Je ne peux pas répondre pour le moment car la clé API (VITE_API_KEY) n'est pas configurée. En attendant, n'oubliez pas de consulter un professionnel de santé pour tout avis médical." };
                     setMessages(prev => [...prev, demoResponse]);
                     setIsLoading(false);
-                }, 1500);
+                }, 1000);
                 return;
             }
             const ai = new GoogleGenAI({ apiKey: API_KEY });
@@ -101,7 +101,7 @@ const AssistantScreen: React.FC = () => {
 
         } catch (error) {
             console.error("Error calling Gemini API:", error);
-            const errorMessage: Message = { sender: 'ai', text: "Désolé, une erreur est survenue. Veuillez réessayer plus tard." };
+            const errorMessage: Message = { sender: 'ai', text: "Désolé, une erreur est survenue lors de la connexion à l'assistant. Veuillez réessayer plus tard." };
             setMessages(prev => [...prev, errorMessage]);
         } finally {
             setIsLoading(false);
